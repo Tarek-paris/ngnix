@@ -1,6 +1,6 @@
 FROM centos:7 
 RUN yum update -y 
-RUN yum install  –y apache2 
+RUN yum install httpd
 RUN yum install wget
 RUN wget http://jaist.dl.sourceforge.net/project/avantfax/avantfax-3.3.5.tgz
 RUN tar -zxvf avantfax-3.3.5.tgz
