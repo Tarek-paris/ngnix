@@ -98,17 +98,8 @@ RUN set -x \
 # forward request and error logs to docker log collector
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
-# create a docker-entrypoint.d directory
-    && mkdir /docker-entrypoint.d
 
-COPY docker-entrypoint.sh /
-COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
-COPY 20-envsubst-on-templates.sh /docker-entrypoint.d
-COPY 30-tune-worker-processes.sh /docker-entrypoint.d
-ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 8080
-
-STOPSIGNAL SIGQUIT
 
 CMD ["nginx", "-g", "daemon off;"]
